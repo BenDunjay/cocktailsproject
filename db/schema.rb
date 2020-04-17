@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_04_16_103459) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "alcohols", force: :cascade do |t|
     t.string "name"
     t.string "colour"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_103459) do
   end
 
   create_table "cocktail_alcohols", force: :cascade do |t|
-    t.integer "cocktail_id", null: false
-    t.integer "alcohol_id", null: false
+    t.bigint "cocktail_id", null: false
+    t.bigint "alcohol_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["alcohol_id"], name: "index_cocktail_alcohols_on_alcohol_id"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_103459) do
   end
 
   create_table "cocktail_garnishes", force: :cascade do |t|
-    t.integer "cocktail_id", null: false
-    t.integer "garnish_id", null: false
+    t.bigint "cocktail_id", null: false
+    t.bigint "garnish_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cocktail_id"], name: "index_cocktail_garnishes_on_cocktail_id"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_103459) do
   end
 
   create_table "cocktail_mixers", force: :cascade do |t|
-    t.integer "cocktail_id", null: false
-    t.integer "mixer_id", null: false
+    t.bigint "cocktail_id", null: false
+    t.bigint "mixer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cocktail_id"], name: "index_cocktail_mixers_on_cocktail_id"
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_103459) do
     t.string "instructions"
     t.string "description"
     t.string "difficulty"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"

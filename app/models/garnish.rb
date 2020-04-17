@@ -1,7 +1,7 @@
 class Garnish < ApplicationRecord
     has_many :cocktail_garnishes
     has_many :cocktails, through: :cocktail_garnishes
-    has_many :users, through: :cocktails
+
 
     validates :name, uniqueness: true
     # validates :name, format: { with: /\A[a-zA-Z]+\z/,
