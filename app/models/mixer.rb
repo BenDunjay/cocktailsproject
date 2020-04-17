@@ -1,7 +1,7 @@
 class Mixer < ApplicationRecord
     has_many :cocktail_mixers
     has_many :cocktails, through: :cocktail_mixers
-    has_many :users, through: :mixers
+    has_many :users, through: :cocktails
 
     validates :name, presence: true 
     validates :name, length: { maximum: 20 }
